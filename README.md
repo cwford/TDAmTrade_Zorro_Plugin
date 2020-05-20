@@ -52,7 +52,7 @@ The following Zorro broker methods are implemented:
 
 &ast;&ast;NOTE: Set below
 
-In order to use this plug-in with Zorro, several DLLs need to be manually copied from the **Lib** folder of this solution to the Zorro **Plugin** folder. 
+In order to use this plug-in with Zorro, several DLLs need to be manually copied from the **Lib** folder of this GitHub project to the Zorro **Plugin** folder. 
 
 |**In Lib Folder As**|**Copied to Zorro Plugin Folder As**|**Description**
 |----------------------|--------------------------------|---------------------|
