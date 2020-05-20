@@ -1,0 +1,612 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ACCESS_TOKEN" xml:space="preserve">
+    <value>Jeton d'accès</value>
+  </data>
+  <data name="ACCOUNT_NUM" xml:space="preserve">
+    <value>Compte #</value>
+  </data>
+  <data name="ALREADY_SUBSCRIBED" xml:space="preserve">
+    <value>déjà abonné à</value>
+  </data>
+  <data name="AT" xml:space="preserve">
+    <value>à</value>
+  </data>
+  <data name="AUTHENTICATING_USER" xml:space="preserve">
+    <value>Authentification de l'utilisateur</value>
+  </data>
+  <data name="BROKER_ACCOUNT" xml:space="preserve">
+    <value>Compte de courtier</value>
+  </data>
+  <data name="BROKER_ASSET" xml:space="preserve">
+    <value>Actif de courtier</value>
+  </data>
+  <data name="BROKER_BUY2" xml:space="preserve">
+    <value>Courtier Buy2</value>
+  </data>
+  <data name="BROKER_HISTORY2" xml:space="preserve">
+    <value>Historique du courtier2</value>
+  </data>
+  <data name="BROKER_LOGIN" xml:space="preserve">
+    <value>Connexion courtier</value>
+  </data>
+  <data name="BROKER_OPEN" xml:space="preserve">
+    <value>Courtier ouvert</value>
+  </data>
+  <data name="BROKER_TIME" xml:space="preserve">
+    <value>Temps du courtier</value>
+  </data>
+  <data name="BROKER_TRADE" xml:space="preserve">
+    <value>Commerce de courtier</value>
+  </data>
+  <data name="BUY" xml:space="preserve">
+    <value>Acheter</value>
+  </data>
+  <data name="BUYING" xml:space="preserve">
+    <value>Achat</value>
+  </data>
+  <data name="CANCEL" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="CANCELED" xml:space="preserve">
+    <value>annulé</value>
+  </data>
+  <data name="CANCELING" xml:space="preserve">
+    <value>annulation</value>
+  </data>
+  <data name="CANCELING_ORDER" xml:space="preserve">
+    <value>Annulation de la commande de</value>
+  </data>
+  <data name="CANNOT_GET_INTEREST_RATES" xml:space="preserve">
+    <value>Impossible d'obtenir les taux d'intérêt sur les devises</value>
+  </data>
+  <data name="CLOSED" xml:space="preserve">
+    <value>fermé</value>
+  </data>
+  <data name="CONN_LOST" xml:space="preserve">
+    <value>La connexion à TD Ameritrade est perdue</value>
+  </data>
+  <data name="CONN_OK_MARKET_CLOSED,Connexion à TD Ameritrade OK" xml:space="preserve">
+    <value> NYSE FERME</value>
+  </data>
+  <data name="CONN_OK_MARKET_OPEN,Connexion à TD Ameritrade OK" xml:space="preserve">
+    <value> NYSE OPEN</value>
+  </data>
+  <data name="CURRENT_UTC_TIME" xml:space="preserve">
+    <value>L'heure UTC actuelle est</value>
+  </data>
+  <data name="ENABLING_BROWSER_EMULATION" xml:space="preserve">
+    <value>Activation de l'émulation du navigateur</value>
+  </data>
+  <data name="ERROR" xml:space="preserve">
+    <value>Erreur</value>
+  </data>
+  <data name="ERROR_FOR_QUOTE" xml:space="preserve">
+    <value>Une erreur non spécifiée s'est produite lors de la récupération des informations de devis pour</value>
+  </data>
+  <data name="ERRORS_IN_TESTS" xml:space="preserve">
+    <value>ERREURS DÉTECTÉES DANS LES ESSAIS DE PLUG-IN</value>
+  </data>
+  <data name="EXITING" xml:space="preserve">
+    <value>Quitter</value>
+  </data>
+  <data name="FAILURE" xml:space="preserve">
+    <value>Échec</value>
+  </data>
+  <data name="FILE" xml:space="preserve">
+    <value>fichier</value>
+  </data>
+  <data name="FILE_IO_ERROR" xml:space="preserve">
+    <value>Erreur de fichier I/O</value>
+  </data>
+  <data name="FILE_NOT_FOUND" xml:space="preserve">
+    <value>Fichier non trouvé</value>
+  </data>
+  <data name="FOR" xml:space="preserve">
+    <value>pour</value>
+  </data>
+  <data name="FOUND" xml:space="preserve">
+    <value>a trouvé</value>
+  </data>
+  <data name="FROM" xml:space="preserve">
+    <value>de</value>
+  </data>
+  <data name="GET_NYSE_HOURS" xml:space="preserve">
+    <value>Obtenez les heures de NYSE</value>
+  </data>
+  <data name="GET_POSITION" xml:space="preserve">
+    <value>Obtenir une position</value>
+  </data>
+  <data name="GET_USER_ACCT_INFO" xml:space="preserve">
+    <value>Obtenir des informations sur le compte utilisateur</value>
+  </data>
+  <data name="GETTING" xml:space="preserve">
+    <value>avoir</value>
+  </data>
+  <data name="GETTING_ACCESS_TOKEN" xml:space="preserve">
+    <value>Obtenir un jeton d'accès</value>
+  </data>
+  <data name="GETTING_NEW_ACCESS_TOKEN" xml:space="preserve">
+    <value>Obtenir un nouveau jeton d'accès</value>
+  </data>
+  <data name="IN" xml:space="preserve">
+    <value>dans</value>
+  </data>
+  <data name="INCORRECT_FORMAT" xml:space="preserve">
+    <value>format incorrect</value>
+  </data>
+  <data name="INFO" xml:space="preserve">
+    <value>information</value>
+  </data>
+  <data name="INTEREST_RATE_INIT" xml:space="preserve">
+    <value>Initialisation des taux d'intérêt</value>
+  </data>
+  <data name="LIMIT" xml:space="preserve">
+    <value>Limite</value>
+  </data>
+  <data name="LIST" xml:space="preserve">
+    <value>liste</value>
+  </data>
+  <data name="LOAD_AND_SYNC" xml:space="preserve">
+    <value>Chargement et synchronisation du fichier des métiers</value>
+  </data>
+  <data name="LOADING_LOCAL_TRADES" xml:space="preserve">
+    <value>Chargement du fichier des métiers locaux</value>
+  </data>
+  <data name="LOADING_TRADES_FILE" xml:space="preserve">
+    <value>Chargement du fichier métiers JSON</value>
+  </data>
+  <data name="MARKET" xml:space="preserve">
+    <value>Marché</value>
+  </data>
+  <data name="MARKET_HOURS" xml:space="preserve">
+    <value>Heures de marché</value>
+  </data>
+  <data name="MSFT_PRICE_HISTORY" xml:space="preserve">
+    <value>Récupération des données de prix historiques sur MSFT</value>
+  </data>
+  <data name="NET_POSITION_FOR" xml:space="preserve">
+    <value>Position nette pour</value>
+  </data>
+  <data name="NO_ID_RETURNED" xml:space="preserve">
+    <value>Aucun ordre retourné pour échange de</value>
+  </data>
+  <data name="NO_TICKS_RETURNED" xml:space="preserve">
+    <value>Aucune tique retournée pour</value>
+  </data>
+  <data name="NOT_EXECUTED" xml:space="preserve">
+    <value>Non exécuté</value>
+  </data>
+  <data name="NOT_FOUND" xml:space="preserve">
+    <value>pas trouvé</value>
+  </data>
+  <data name="NOT_OPEN" xml:space="preserve">
+    <value>pas ouverte</value>
+  </data>
+  <data name="OPEN" xml:space="preserve">
+    <value>ouvert</value>
+  </data>
+  <data name="ORDER" xml:space="preserve">
+    <value>ordre</value>
+  </data>
+  <data name="PLACING_ORDER" xml:space="preserve">
+    <value>Passer une commande pour</value>
+  </data>
+  <data name="PLACING_ORDER_FOR" xml:space="preserve">
+    <value>Passer une commande pour</value>
+  </data>
+  <data name="PRICE_HISTORY" xml:space="preserve">
+    <value>historique des prix</value>
+  </data>
+  <data name="PRICE_OF" xml:space="preserve">
+    <value>prix de</value>
+  </data>
+  <data name="READING" xml:space="preserve">
+    <value>En train de lire</value>
+  </data>
+  <data name="READING_SETTINGS" xml:space="preserve">
+    <value>Lecture du fichier SETTINGS</value>
+  </data>
+  <data name="READING_SETTINGS_FILE" xml:space="preserve">
+    <value>Lecture du fichier SETTINGS</value>
+  </data>
+  <data name="REFRESH_TOKEN" xml:space="preserve">
+    <value>Actualiser le jeton</value>
+  </data>
+  <data name="REJECTED" xml:space="preserve">
+    <value>rejeté</value>
+  </data>
+  <data name="RETRIEVE_ACCT_INFO" xml:space="preserve">
+    <value>Récupération des informations de compte d'utilisateur pour TDA #</value>
+  </data>
+  <data name="RETRIEVING" xml:space="preserve">
+    <value>Récupération</value>
+  </data>
+  <data name="RETRIEVING_INFO_FOR" xml:space="preserve">
+    <value>Récupération d'informations pour</value>
+  </data>
+  <data name="RETURN_CODE" xml:space="preserve">
+    <value>Code de retour</value>
+  </data>
+  <data name="SELL" xml:space="preserve">
+    <value>Vendre</value>
+  </data>
+  <data name="SELLING" xml:space="preserve">
+    <value>Vente</value>
+  </data>
+  <data name="SERVER_UTC_CONVERTED" xml:space="preserve">
+    <value>Heure UTC du serveur (convertie)</value>
+  </data>
+  <data name="SERVER_UTC_OLE" xml:space="preserve">
+    <value>Heure UTC du serveur (OLE)</value>
+  </data>
+  <data name="SETTINGS" xml:space="preserve">
+    <value>Réglages</value>
+  </data>
+  <data name="SETTINGS_FILE_ERROR,ÉCHEC: lecture du fichier SETTINGS.\r\nLe fichier SETTINGS doit contenir:\r\n(1) la devise du compte\r\n(2) le TD Ameritrade Acct. #\r\n(3) Le code de langue de mondialisation par défaut\r\nVeuillez consulter la documentation de ce\r\nfichier" xml:space="preserve">
+    <value> réessayez le plug-in en mode Démo.</value>
+  </data>
+  <data name="SHARES_OF" xml:space="preserve">
+    <value>parts de</value>
+  </data>
+  <data name="STATUS" xml:space="preserve">
+    <value>Statut</value>
+  </data>
+  <data name="SUBSCRIBING_TO" xml:space="preserve">
+    <value>Abonnement à l'actif</value>
+  </data>
+  <data name="SUCCESS" xml:space="preserve">
+    <value> r</value>
+  </data>
+  <data name="SUCCESS_IN_TESTS" xml:space="preserve">
+    <value>TOUS LES TESTS DE PLUG-IN SONT RÉUSSIS</value>
+  </data>
+  <data name="SYNCING" xml:space="preserve">
+    <value>Synchronisation</value>
+  </data>
+  <data name="SYNCING_LOCAL_TRADES" xml:space="preserve">
+    <value>Synchronisation du fichier des transactions locales avec les transactions TD Ameritrade.</value>
+  </data>
+  <data name="TDAMTRADE" xml:space="preserve">
+    <value>TD Ameritrade</value>
+  </data>
+  <data name="TEST" xml:space="preserve">
+    <value>Tester</value>
+  </data>
+  <data name="TEST_ACCESS_TOKEN_FROM_REFRESH" xml:space="preserve">
+    <value>Jeton d'accès obtenu à partir du jeton d'actualisation</value>
+  </data>
+  <data name="TEST_ASSET_FAILURE" xml:space="preserve">
+    <value>ÉCHEC: abonnement à</value>
+  </data>
+  <data name="TEST_ASSET_INFO_FAILURE" xml:space="preserve">
+    <value>ÉCHEC: obtenir des informations sur les actifs pour</value>
+  </data>
+  <data name="TEST_ASSET_SUCCESS" xml:space="preserve">
+    <value>SUCCÈS: S'abonner à</value>
+  </data>
+  <data name="TEST_AUTHENTICATION_AUTH_TOKEN" xml:space="preserve">
+    <value>Utilisateur authentifié. Jeton d'authentification obtenu.</value>
+  </data>
+  <data name="TEST_AUTHENTICATION_FAILURE" xml:space="preserve">
+    <value>Utilisateur non authentifié</value>
+  </data>
+  <data name="TEST_BUY_SELL_INFO,Marché ACHETER et VENDRE. ACHAT LIMITE et VENTE ...\r\nSi le NYSE est FERME, les commandes LIMITE et MARCHE seront passées.\r\nSi le NYSE est OUVERT" xml:space="preserve">
+    <value> seules les commandes LIMITES seront passées.\r\nLimite ACHAT et VENTE passées aux prix cela ne devrait pas être atteint.\r\nLes commandes réussies seront annulées immédiatement.</value>
+  </data>
+  <data name="TEST_HEADING,L'API TD Ameritrade ne prend pas en charge le «commerce de papier».\r\nEn mode DÉMO" xml:space="preserve">
+    <value> le plug-in exécute une variété de\r\ntests auto-daignostiques.</value>
+  </data>
+  <data name="TEST_HISTORICAL_INFO,Obtenez des informations historiques sur MSFT ...\r\nHeure de début: mer, 29 avr 2020 14:00:00 GMT\r\nHeure de fin: mer" xml:space="preserve">
+    <value> 29 avr 2020 18:00:00 GMT</value>
+  </data>
+  <data name="TEST_INTEREST_RATE_INIT_FAILURE,ÉCHEC: taux d’intérêt en devises non initialisés.\r\nLes taux d’intérêt en devises sont obtenus sur le site Web de\r\nTrading Economics. Vérifiez que l'adresse\r\nde ce site Web est: https://tradingeconomics.com/ et qu'un\r\ntableau de taux d'intérêt apparaît sur cette page. Si ce n'est pas le cas" xml:space="preserve">
+    <value> la\r\nsource des taux d'intérêt en devises internationales devra\r\nêtre modifiée et la méthode pour les extraire\r\nde cette source également.\r\n</value>
+  </data>
+  <data name="TEST_NO_ACCESS_TOKEN_FROM_REFRESH" xml:space="preserve">
+    <value>Jeton d'accès non obtenu à partir du jeton d'actualisation</value>
+  </data>
+  <data name="TEST_ORDER_INFO_FAILURE" xml:space="preserve">
+    <value>ÉCHEC: récupération des informations de commande</value>
+  </data>
+  <data name="TEST_ORDER_INFO_SUCCESS" xml:space="preserve">
+    <value>RÉUSSITE: récupération des informations de commande.\r\nÉtat de la commande:</value>
+  </data>
+  <data name="TEST_REFRESH_TOKEN_AUTH" xml:space="preserve">
+    <value>Actualiser l'authentification par jeton</value>
+  </data>
+  <data name="TEST_SERVER_TIME_FAILURE" xml:space="preserve">
+    <value>ÉCHEC: heure du serveur différente de l'heure actuelle</value>
+  </data>
+  <data name="TEST_SERVER_TIME_SUCCESS" xml:space="preserve">
+    <value>SUCCÈS: Temps serveur obtenu</value>
+  </data>
+  <data name="THE_NYSE_IS" xml:space="preserve">
+    <value>Le NYSE est</value>
+  </data>
+  <data name="TICKS_RETURNED" xml:space="preserve">
+    <value>Tiques retournées pour</value>
+  </data>
+  <data name="TO_CANCEL" xml:space="preserve">
+    <value>ANNULER</value>
+  </data>
+  <data name="TO_CLOSE" xml:space="preserve">
+    <value>FERMER</value>
+  </data>
+  <data name="TRADE" xml:space="preserve">
+    <value>Commerce</value>
+  </data>
+  <data name="TRADE_LIST" xml:space="preserve">
+    <value>liste de commerce</value>
+  </data>
+  <data name="TRADE_LISTS" xml:space="preserve">
+    <value>listes commerciales</value>
+  </data>
+  <data name="TRADE_NOT_FOUND_IN_XREF" xml:space="preserve">
+    <value>Commerce non trouvé dans la liste x-ref</value>
+  </data>
+  <data name="UNSPECIFIED_ERROR" xml:space="preserve">
+    <value>Erreur non spécifiée</value>
+  </data>
+  <data name="UPDATING_ASSETS_CSV" xml:space="preserve">
+    <value>Mise à jour du fichier CSV des actifs</value>
+  </data>
+  <data name="UPDATING_TRADE" xml:space="preserve">
+    <value>Mise à jour du commerce</value>
+  </data>
+  <data name="WINDOWS_FORM_ICON_NOT_DESTROYED" xml:space="preserve">
+    <value>L'icône Windows Form n'est pas détruite</value>
+  </data>
+  <data name="ZORRO" xml:space="preserve">
+    <value>Zorro</value>
+  </data>
+  <data name="LANG_NOT_FOUND" xml:space="preserve">
+    <value>Langue non trouvée (voir documentation)</value>
+  </data>
+  <data name="LANG_SPEC_INVALID" xml:space="preserve">
+    <value>Spécification de langue non valide (voir la documentation)</value>
+  </data>
+  <data name="FUND_MINIMUM_NOT_MET" xml:space="preserve">
+    <value>L'investissement minimum sur ce fonds commun de placement n'a pas été atteint</value>
+  </data>
+  <data name="INVALID_ASSET_NOT_SUBSCRIBED" xml:space="preserve">
+    <value>Élément non valide non ajouté à la liste d'abonnement</value>
+  </data>
+  <data name="VALID_ASSET_SUBSCRIBED" xml:space="preserve">
+    <value>Élément valide ajouté à la liste d'abonnement</value>
+  </data>
+  <data name="COMBO_ORDER_FAILED_LIMIT" xml:space="preserve">
+    <value>L'ordre de l'étape combinée a échoué. Différents prix LIMIT saisis</value>
+  </data>
+  <data name="COMBO_ORDER_FAILED_PRICE" xml:space="preserve">
+    <value>L'ordre de l'étape combinée a échoué. Ordres mixtes LIMIT et MARKET non autorisés</value>
+  </data>
+  <data name="FOR_MORE_LEGS" xml:space="preserve">
+    <value>Pour plus de jambes d'ordre</value>
+  </data>
+  <data name="GET_OPTIONS" xml:space="preserve">
+    <value>Obtenir la chaîne d'options</value>
+  </data>
+  <data name="SAVING_COMBO_OPTION_ORDER" xml:space="preserve">
+    <value>Enregistrement de l'option de combo</value>
+  </data>
+  <data name="SUBSCRIBING_TO_ASSET" xml:space="preserve">
+    <value>Abonnement à l'actif</value>
+  </data>
+  <data name="WAITING" xml:space="preserve">
+    <value>ATTENDRE</value>
+  </data>
+  <data name="RETRIEVING_OPTION_CHAIN" xml:space="preserve">
+    <value>Récupération de la chaîne d'options</value>
+  </data>
+  <data name="ACCEPTED" xml:space="preserve">
+    <value>Accepté</value>
+  </data>
+  <data name="AWAITING_CONDITION" xml:space="preserve">
+    <value>En attente d'une condition</value>
+  </data>
+  <data name="AWAITING_MANUAL_REVIEW" xml:space="preserve">
+    <value>En attente de révision manuelle</value>
+  </data>
+  <data name="AWAITING_PARENT_ORDER" xml:space="preserve">
+    <value>En attente de l'ordre des parents</value>
+  </data>
+  <data name="AWAITING_UR_OUT" xml:space="preserve">
+    <value>En attente de sortie</value>
+  </data>
+  <data name="EXPIRED" xml:space="preserve">
+    <value>Expiré</value>
+  </data>
+  <data name="FILLED" xml:space="preserve">
+    <value>Rempli</value>
+  </data>
+  <data name="PENDING_ACTIVATION" xml:space="preserve">
+    <value>Activation en attente</value>
+  </data>
+  <data name="PENDING_CANCEL" xml:space="preserve">
+    <value>Annulation en attente</value>
+  </data>
+  <data name="PENDING_REPLACE" xml:space="preserve">
+    <value>Remplacement en attente</value>
+  </data>
+  <data name="QUEUED" xml:space="preserve">
+    <value>En file d'attente</value>
+  </data>
+  <data name="REPLACED" xml:space="preserve">
+    <value>Remplacé</value>
+  </data>
+  <data name="WORKING" xml:space="preserve">
+    <value>Travail</value>
+  </data>
+  <data name="ALL_CLOSE_SUCCESS" xml:space="preserve">
+    <value>Toutes les commandes de fermeture ont abouti</value>
+  </data>
+  <data name="BUT_NOT_CANCELED" xml:space="preserve">
+    <value>Mais cela ne pouvait pas être ANNULÉ</value>
+  </data>
+  <data name="IT_WAS_CANCELED" xml:space="preserve">
+    <value>Il a été ANNULÉ</value>
+  </data>
+  <data name="NOT_IN_COMBO" xml:space="preserve">
+    <value>les instruments ne doivent pas être placés dans les commandes de jambes combinées.\r\n Seules les commandes OPTION peuvent être placées dans les jambes de combinaisons</value>
+  </data>
+  <data name="NO_LIMIT_IN_COMBO" xml:space="preserve">
+    <value>Aucune commande LIMIT dans une commande multi-étapes</value>
+  </data>
+  <data name="ORDER_LEG" xml:space="preserve">
+    <value>Ordre jambe</value>
+  </data>
+  <data name="SOME_COMBO_NOT_CLOSED" xml:space="preserve">
+    <value>Certaines branches de ce commerce combiné n'ont pas été fermées</value>
+  </data>
+  <data name="THIS_CLOSE_SUCCESS" xml:space="preserve">
+    <value>Cette commande a été conclue avec succès</value>
+  </data>
+  <data name="THIS_TRADE_WAS" xml:space="preserve">
+    <value>Ce commerce était</value>
+  </data>
+  <data name="TRADE_NOT_CLOSED" xml:space="preserve">
+    <value>Ce commerce n'a pas été fermé</value>
+  </data>
+  <data name="TRADE_NOT_CLOSED_BECAUSE" xml:space="preserve">
+    <value>Le commerce n'a pas été fermé parce que le commerce était</value>
+  </data>
+  <data name="GET_ASSET_LIST" xml:space="preserve">
+    <value>Obtenir la liste des actifs</value>
+  </data>
+  <data name="GET_TEST_ASSETS" xml:space="preserve">
+    <value>Obtenir des actifs de test</value>
+  </data>
+  <data name="LICENSE_NOT_ACCEPTED" xml:space="preserve">
+    <value>Licence non acceptée, le plug-in ne peut pas être utilisé</value>
+  </data>
+  <data name="MARKET_NOT_OPEN" xml:space="preserve">
+    <value>Le marché n'est pas ouvert</value>
+  </data>
+  <data name="NOT_FOUND_IN_SUBSCRIPTIONS" xml:space="preserve">
+    <value>introuvable dans la liste d'abonnement</value>
+  </data>
+  <data name="TABLES_NOT_CREATED" xml:space="preserve">
+    <value>Impossible de créer des tables de base de données</value>
+  </data>
+  <data name="TRADE_FILE_SYNCHRONIZATION" xml:space="preserve">
+    <value>Synchronisation des fichiers commerciaux</value>
+  </data>
+</root>
