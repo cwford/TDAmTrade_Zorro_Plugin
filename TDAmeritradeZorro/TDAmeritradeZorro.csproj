@@ -57,7 +57,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DBLib">
-      <HintPath>Lib\DBLib.dll</HintPath>
+      <HintPath>..\Lib\DBLib.dll</HintPath>
     </Reference>
     <Reference Include="DllExport, PublicKeyToken=8337224c9ad9e356">
       <HintPath>$(SolutionDir)packages\DllExport.1.7.1\gcache\$(DllExportMetaXBase)\$(DllExportNamespace)\$(DllExportMetaLibName)</HintPath>
@@ -181,24 +181,24 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="bin\x86\Debug\DBLib.dll" />
+    <Content Include="bin\x86\Debug\Microsoft.Data.Sqlite.dll" />
+    <Content Include="bin\x86\Debug\TDAmeritrade.dll" />
+    <Content Include="bin\x86\Debug\TDAmeritrade.pdb" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DllExport">
       <Version>1.7.1</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Lib\DBLib.dll" />
-    <Content Include="Lib\Microsoft.Data.Sqlite.dll" />
-    <Content Include="Lib\sqlite3.dll" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>ECHO F | xcopy "$(TargetPath)" "$(SolutionDir)TDAmeritradeZorro\Lib\TDAmeritrade.dll" /Y
-ECHO F | xcopy "$(SolutionDir)TDAmeritradeZorro\Lib\TDAmeritrade.dll" "c:\Users\cwford\Zorro\Plugin\TDAmeritrade.dll" /Y
-ECHO F | xcopy "$(SolutionDir)TDAmeritradeZorro\Lib\DBLib.dll" "c:\Users\cwford\Zorro\Plugin\DBLib.dll" /Y
-ECHO F | xcopy "$(SolutionDir)TDAmeritradeZorro\Lib\Microsoft.Data.Sqlite.dll" "c:\Users\cwford\Zorro\Plugin\Microsoft.Data.Sqlite.dll" /Y
-ECHO F | xcopy "$(SolutionDir)TDAmeritradeZorro\Lib\sqlite3.dll" "c:\Users\cwford\Zorro\Plugin\sqlite3.dll" /Y
+    <PostBuildEvent>ECHO F | xcopy "$(TargetPath)" "$(SolutionDir)Lib\TDAmeritrade.dll" /Y
+ECHO F | xcopy "$(SolutionDir)Lib\TDAmeritrade.dll" "c:\Users\cwford\Zorro\Plugin\TDAmeritrade.dll" /Y
+ECHO F | xcopy "$(SolutionDir)Lib\DBLib.dll" "c:\Users\cwford\Zorro\Plugin\DBLib.dll" /Y
+ECHO F | xcopy "$(SolutionDir)Lib\Microsoft.Data.Sqlite.dll" "c:\Users\cwford\Zorro\Plugin\Microsoft.Data.Sqlite.dll" /Y
+ECHO F | xcopy "$(SolutionDir)Lib\sqlite3.dll" "c:\Users\cwford\Zorro\Plugin\sqlite3.dll" /Y
 </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
