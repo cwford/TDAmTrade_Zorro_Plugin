@@ -442,7 +442,7 @@ function run()
 	if (RunNum > 0)
 		printf("\nEntered TESTING RUN #%i...", RunNum);
 	else
-		printf("\nINITIALIZATION RUN99999...", RunNum);
+		printf("\nINITIALIZATION RUN...");
 
 
 	// Is this RUN beyond the initial RUN?
@@ -474,4 +474,7 @@ function run()
 			tradeType = !tradeType;
 		}
 	}
+
+	// Bump the run number
+	++RunNum;
 }

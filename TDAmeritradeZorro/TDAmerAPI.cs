@@ -440,7 +440,7 @@ namespace TDAmeritradeZorro
                 if (balance == null)
                 {
                     // TODO: Translation
-                    LogHelper.Log(LogLevel.Error, $"{Resx.GetString("FAILURE").ToUpper()}: {Resx.GetString("INVALID_TDA_ACCT_NUM")}.");
+                    BrokerError($"{Resx.GetString("FAILURE").ToUpper()}: {Resx.GetString("INVALID_TDA_ACCT_NUM")}.");
                     return 0;
                 }
 
