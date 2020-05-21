@@ -2,7 +2,7 @@
   <img height="120" src="https://github.com/cwford/TDAmTrade_Zorro_Plugin/blob/master/Documentation/Images/zorro-tda.png">
 </p>
 <p align="center">
-  <strong>Version 1.01</strong>
+  <strong>Version 1.0.1</strong>
 </p>
 <p align="center">
   <em><strong>A C# TD Ameritrade Broker Plug-In for Zorro.</strong></em>
