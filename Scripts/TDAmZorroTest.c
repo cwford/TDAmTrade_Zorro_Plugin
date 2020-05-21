@@ -1,5 +1,44 @@
-﻿// Trade Test for Broker API Verification ///////////////////
-
+﻿//*****************************************************************************
+// File: TDAmZorroTest.c
+//
+// Author: Clyde W. Ford
+//
+// Date: April 24, 2020
+//
+// Description: Zorro strategy file to test the TD Ameritrade Broker Plug-In.
+//
+// Copright (c) 2020 Clyde W. Ford. All rights reserved.
+//
+// License: LGPL-3.0 (Non-commercial use only)
+//
+// DISCLAIMER:
+//
+// This Zorro plug-in is offered on an AS IS basis with no claims or warranties
+// that it is fit or complete for any given purpose. YOU USE THIS PLUG-IN AT
+// YOUR OWN RISK.
+//
+// Since the plug-in may be used as part of a system to trade financial instru-
+// ments, the user of this plug-in accepts complete and total responsibility 
+// for any damages, monetary or otherwise, that arize from the use of the plug-
+// in, and holds harmless the author of the plug-in for any damages, financial
+// or otherwise, incurred.
+//
+// For further information, see the Disclaimer included with this plug-in.
+//*****************************************************************************
+//
+// THIS ZORROR STRATEGY SCRIPT IS FOR TESTING PURPOSES ONLY. The script does
+// not perform any real trading functions. All BUY and SELL orders are placed
+// at unrealistic LIMIT conditions, so they hopefully will not be filled, and
+// these orders are canceled soon after they are placed.
+//
+// USE THIS TESTING SCRIPT AT YOU OWN RISK. Choose the assets you wish to test
+// the plug-in with carefully. They should be assets with extremely low prices
+// to protect against an order being filled by TD Ameritrade.
+// This test script cycles through two rounds of BUYING and SELLING a list of
+// assets that appears in you SETTINGS file. Please see the documentation for
+// the plug-in at: https://github.com/cwford/TDAmTrade_Zorro_Plugin/wiki for
+// additional information about the SETTINGS file and the testing process.
+//
 //#define BY_MARGIN
 //#define LOG_ACCOUNT
 //#define LOG_BOOK
@@ -17,7 +56,7 @@
 // Define a DUMMY asset.
 #define PERCENTSTOP
 #define MAXLOTS 50
-#define MAXLIMIT 10
+#define MAXLIMIT 15
 #define VERBOSE 7
 #define LOG_TRADES
 #define DIAGNOSTICS 1
@@ -34,7 +73,7 @@
 #define GET_TEST_ASSETS 4006	  // current asset list
 #define SET_VERBOSITY 4008		  // command to set plug-in's verbosity level
 #define SET_TESTMODE 4010		  // 1 = test mode; 0 = not test mode
-#define TOTAL_RUNS 9 // The total number of runs for this test script
+#define TOTAL_RUNS 10 // The total number of runs for this test script
 
 int AutoTrade = 0;
 int OrderMode = 0;
@@ -47,57 +86,23 @@ char testAssetsArray[150];
 //*****************************************************************************
 //                             M E T H O D S
 //*****************************************************************************
-int tradeAdapt(
-	var Step)
-{
-	if (!TradeIsOpen)
-	{ // entry limit
-		if (TradeIsLong)
-		{
-			if (OrderLimit > TradePriceOpen)
-				return 0;		// try no more
-			OrderLimit += Step; // adapt limit
-		}
-		else
-		{ // short
-			if (OrderLimit < TradePriceOpen - Spread)
-				return 0;
-			OrderLimit -= Step;
-		}
-	}
-	else
-	{ // exit limit
-		if (TradeIsLong)
-			OrderLimit -= Step;
-		else
-			OrderLimit += Step;
-	}
-	OrderLimit = roundto(OrderLimit, PIP / 2);
-	return 1;
-}
-
-int tmf()
-{
-	//	printf("\nTMF: %f/%f\\%f/%f",priceOpen(),priceHigh(),priceLow(),priceClose());
-	// adapt limit of FOK/IOC trades
-	if (TradeIsMissed && OrderMode >= 2)
-	{
-		var Step = max(0.333 * Spread, 0.333 * PIP);
-		if (OrderMode == 2)	 // FOK order
-			OrderDelay = 30; // try again in 30 seconds
-		else				 // GTC order, no delay needed
-			OrderDelay = 0;
-		if (!tradeAdapt(Step))
-			return 1; // cancel trade
-		else
-		{
-			printf("\n%s Limit %s", strtr(ThisTrade), sftoa(OrderLimit, 5));
-			return ifelse(TradeIsOpen, 1 + 16, 2 + 16); // repeat order, and trigger tmf at next event
-		}
-	}
-	return 16;
-}
-
+//*****************************************************************************
+//  Method: setLimit
+//
+/// <summary>
+/// Set the LIMIT price of the currently selected asset
+/// </summary>
+/// 
+/// <param name="Factor">
+/// Factor used in setting the limit price
+/// </param>
+/// 
+/// <remarks>
+/// For this test script the limit price should be set unrealisticly far away
+/// from the asset price to lessen the chance of an order actually being
+/// filled within a minute of being received by TD Ameritrade.
+/// </remarks>
+//*****************************************************************************
 void setLimit(
 	var Factor)
 {
@@ -131,50 +136,18 @@ void setLimit(
 #endif
 }
 
-void doTrade(
-	int What,
-	var Factor)
-{
-#ifdef BY_MARGIN
-	Margin = slider(1);
-#else
-	Lots = slider(1); // get current slider position
-#endif
-#ifdef PERCENTSTOP
-	if (slider(2) > 0)
-		Stop = Trail = roundto(0.01 * priceClose() * slider(2), PIP);
-	else
-		Stop = 0;
-#else
-	Stop = Trail = PIP * slider(2);
-#endif
-	//if(OrderMode) TradeMode &= ~TR_MAIN; //else TradeMode |= TR_MAIN;
-#ifdef ORDERTEXT
-	brokerCommand(SET_ORDERTEXT, ORDERTEXT);
-#endif
-	setLimit(Factor);
-	if (What == 1)
-		enterLong(tmf);
-	else if (What == 2)
-		enterShort(tmf);
-	else if (What == 3)
-	{
-#ifdef BY_MARGIN
-		exitLong();
-#else
-		exitLong(0, 0, Lots);
-#endif
-	}
-	else if (What == 4)
-	{
-#ifdef BY_MARGIN
-		exitShort();
-#else
-		exitShort(0, 0, Lots);
-#endif
-	}
-}
-
+//*****************************************************************************
+//  Method: loadTestAssets
+//
+/// <summary>
+/// Load the list of test assets found in the Settings file.
+/// </summary>
+/// 
+/// <remarks>
+/// See plug-in wiki at https://github.com/cwford/TDAmTrade_Zorro_Plugin/wiki
+/// for additional information about the SETTINGS file and about test assets.
+/// </remarks>
+//*****************************************************************************
 void loadTestAssets()
 {
 	// Method members
@@ -204,6 +177,14 @@ void loadTestAssets()
 	}
 }
 
+//*****************************************************************************
+//  Method: initRun
+//
+/// <summary>
+/// Initialization method called during first RUN through run function of this
+/// script.
+/// </summary>
+//*****************************************************************************
 void initRun()
 {
 	// Add a DUMMY asset, so everything else can proceed normally
@@ -308,6 +289,13 @@ void initRun()
 #endif
 }
 
+//*****************************************************************************
+//  Method: closing
+//
+/// <summary>
+/// Close LONG or SHORT trades for the test assets.
+/// </summary>
+//*****************************************************************************
 void closing
 ()
 {
@@ -334,7 +322,14 @@ void closing
 	printf("\n");
 }
 
-void goingLong
+//*****************************************************************************
+//  Method: goLong
+//
+/// <summary>
+/// Issue trade orders to enter LONG positions for the test assets.
+/// </summary>
+//*****************************************************************************
+void goLong
 ()
 {
 	int i;
@@ -359,7 +354,14 @@ void goingLong
 	printf("\n");
 }
 
-void goingShort
+//*****************************************************************************
+//  Method: goShort
+//
+/// <summary>
+/// Issue trade orders to enter SHORT positions for the test assets.
+/// </summary>
+//*****************************************************************************
+void goShort
 ()
 {
 	int i;
@@ -383,8 +385,28 @@ void goingShort
 	printf("\n");
 }
 
+//*****************************************************************************
+//  Function: run
+//
+/// <summary>
+/// Heartbeat function of this test script.
+/// </summary>
+/// 
+/// <remarks>
+/// Called once for every bar period.
+/// </remarks>
+//*****************************************************************************
 function run()
 {
+	// Last run
+	if (RunNum == TOTAL_RUNS)
+	{
+		printf("\n*********************************************************");
+		printf("\n******** TD Ameritrade-Zorro Plug-In Testing End ********");
+		printf("\n*********************************************************");
+		quit();
+	}
+	
 	// In test mode?
 	if (is(TESTMODE))
 	{
@@ -416,7 +438,12 @@ function run()
 		asset("");
 	}
 
-	printf("\nEntered TESTING RUN #%i...", RunNum);
+	// Print run # being entered
+	if (RunNum > 0)
+		printf("\nEntered TESTING RUN #%i...", RunNum);
+	else
+		printf("\nINITIALIZATION RUN99999...", RunNum);
+
 
 	// Is this RUN beyond the initial RUN?
 	if (RunNum > 0)
@@ -433,24 +460,18 @@ function run()
 			if (tradeType)
 			{
 				// YES: Going long for this run
-				goingLong(); `
+				goLong(); `
 					closingType = 1;
 			}
 			else
 			{
 				// NO: Going shont from this run
-				goingShort();
+				goShort();
 				closingType = 0;
 			}
 
 			// Swap going long and going short
 			tradeType = !tradeType;
 		}
-	}
-
-	if (++RunNum == TOTAL_RUNS)
-	{
-		printf("\n******** TD Ameritrade-Zorro Plug-In Testing End ********");
-		quit();
 	}
 }
