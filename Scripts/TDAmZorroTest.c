@@ -80,7 +80,7 @@ int OrderMode = 0;
 int RunNum = 0;
 int numTestAssets = 0;
 int closingType = 1;
-bool tradeType = true; i
+bool tradeType = true;
 char testAssetsArray[150];
 
 //*****************************************************************************

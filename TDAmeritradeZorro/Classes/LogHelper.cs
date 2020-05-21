@@ -67,7 +67,7 @@ namespace TDAmeritradeZorro.Classes
         private static Regex reNum = new Regex(@"\((.*)\)");
 
         // The date format string
-        private static string dateFmt;
+        private static string dateFmt { get; set; }
 
         //*********************************************************************
         //  Method: ParseFormat

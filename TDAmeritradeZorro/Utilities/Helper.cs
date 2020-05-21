@@ -33,7 +33,7 @@ using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices;
 using TDAmeritradeZorro.Classes;
-using DBLib.Classes;
+using TDAmeritradeZorro.Classes.DBLib;
 using TDAmeritradeZorro.Classes.TDA;
 using Microsoft.Win32;
 

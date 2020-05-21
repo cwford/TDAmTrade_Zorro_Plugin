@@ -40,7 +40,6 @@
     <OutputPath>bin\x86\Debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <RegisterForComInterop>false</RegisterForComInterop>
@@ -56,9 +55,6 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DBLib">
-      <HintPath>..\Lib\DBLib.dll</HintPath>
-    </Reference>
     <Reference Include="DllExport, PublicKeyToken=8337224c9ad9e356">
       <HintPath>$(SolutionDir)packages\DllExport.1.7.1\gcache\$(DllExportMetaXBase)\$(DllExportNamespace)\$(DllExportMetaLibName)</HintPath>
       <Private>False</Private>
@@ -84,12 +80,14 @@
     <Compile Include="Classes\Broker.cs" />
     <Compile Include="Classes\Crypto.cs" />
     <Compile Include="Classes\DateTimeExtensions.cs" />
+    <Compile Include="Classes\DBLib\DataAccess.cs" />
+    <Compile Include="Classes\DBLib\DataAnnotations.cs" />
+    <Compile Include="Classes\DBLib\DBSuccess.cs" />
+    <Compile Include="Classes\DBLib\DBUtils.cs" />
     <Compile Include="Classes\EnumExtensions.cs" />
     <Compile Include="Classes\Enums.cs" />
     <Compile Include="Classes\ExpDateMap.cs" />
-    <Compile Include="Classes\LicenseForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Classes\LicenseForm.cs" />
     <Compile Include="Classes\LicenseForm.Designer.cs">
       <DependentUpon>LicenseForm.cs</DependentUpon>
     </Compile>
@@ -152,17 +150,12 @@
     <Compile Include="Utilities\ApiHelper.cs" />
     <Compile Include="Utilities\Helper.cs" />
     <Compile Include="Utilities\Resx.cs" />
-    <Compile Include="WebApi\AuthForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="WebApi\AuthForm.cs" />
     <Compile Include="WebApi\AuthForm.Designer.cs">
       <DependentUpon>AuthForm.cs</DependentUpon>
     </Compile>
     <Compile Include="WebApi\Classes\QueryStringHelper.cs" />
     <Compile Include="WebApi\Classes\TDAmeritradeREST.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Classes\LicenseForm.resx">
@@ -182,21 +175,25 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\x86\Debug\DBLib.dll" />
-    <Content Include="bin\x86\Debug\Microsoft.Data.Sqlite.dll" />
-    <Content Include="bin\x86\Debug\TDAmeritrade.dll" />
-    <Content Include="bin\x86\Debug\TDAmeritrade.pdb" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DllExport">
       <Version>1.7.1</Version>
+      <Visible>false</Visible>
+      <Wz>1</Wz>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Data.Sqlite">
+      <Version>1.1.1</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>ECHO F | xcopy "$(TargetPath)" "$(SolutionDir)Lib\TDAmeritrade.dll" /Y
+ECHO F | xcopy "$(TargetDir)Microsoft.Data.Sqlite.dll" "$(SolutionDir)Lib\Microsoft.Data.Sqlite.dll" /Y
+ECHO F | xcopy "$(TargetDir)sqlite3.dll" "$(SolutionDir)Lib\sqlite3.dll" /Y
+
 ECHO F | xcopy "$(SolutionDir)Lib\TDAmeritrade.dll" "c:\Users\cwford\Zorro\Plugin\TDAmeritrade.dll" /Y
-ECHO F | xcopy "$(SolutionDir)Lib\DBLib.dll" "c:\Users\cwford\Zorro\Plugin\DBLib.dll" /Y
 ECHO F | xcopy "$(SolutionDir)Lib\Microsoft.Data.Sqlite.dll" "c:\Users\cwford\Zorro\Plugin\Microsoft.Data.Sqlite.dll" /Y
 ECHO F | xcopy "$(SolutionDir)Lib\sqlite3.dll" "c:\Users\cwford\Zorro\Plugin\sqlite3.dll" /Y
 </PostBuildEvent>

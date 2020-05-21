@@ -25,7 +25,7 @@
 //
 // For further information, see the Disclaimer included with this plug-in.
 //*****************************************************************************
-using DBLib.Classes;
+using TDAmeritradeZorro.Classes.DBLib;
 
 namespace TDAmeritradeZorro.Classes.TDA
 {

@@ -42,6 +42,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using TDAmer;
 using TDAmeritradeZorro.Classes;
+using TDAmeritradeZorro.Classes.DBLib;
 using TDAmeritradeZorro.Classes.TDA;
 using TDAmeritradeZorro.Structs;
 using TDAmeritradeZorro.Utilities;
@@ -400,7 +401,7 @@ namespace TDAmeritradeZorro
             BrokerError("TD Ameritrade - Zorro Plug-In");
             BrokerError("Copyright © 2020 by Clyde W. Ford.");
             BrokerError("All Rights Reserved.");
-            BrokerError($"Version {Helper.GetRegistryValue(Broker.VERSION_NUMBER)}");
+            BrokerError($"Version {Broker.GetVersionNumber()}");
             BrokerError("Free for non-commercial use only.");
             BrokerError("USE AT YOU OWN RISK.\r\n\r\n");
 
@@ -408,7 +409,7 @@ namespace TDAmeritradeZorro
             Broker.WORKING_DIR = Directory.GetCurrentDirectory();
 
             // Set the database connection string
-            DBLib.Classes.DataAccess.SetConnString(Broker.WORKING_DIR + "/Data/tda.db");
+            DataAccess.SetConnString(Broker.WORKING_DIR + "/Data/tda.db");
 
             // Was SETTINGS initialization successful?
             if (Broker.InitSettings(user))

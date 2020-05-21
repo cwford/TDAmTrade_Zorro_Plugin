@@ -91,7 +91,7 @@ namespace TDAmeritradeZorro.Classes
             Broker.CreateDbTables();
 
             // Set the VERBOSITY LEVEL
-            TDAmerAPI.verbosityLevel = Verbosity.Intermediate; 
+            TDAmerAPI.verbosityLevel = Verbosity.Extensive; 
 
             //*****************************************************************
             //

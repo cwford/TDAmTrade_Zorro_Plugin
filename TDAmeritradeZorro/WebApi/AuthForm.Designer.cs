@@ -88,7 +88,7 @@ namespace TDAmeritradeZorro.WebApi
 
                 // Width and height of the form and th web browser control 
                 int width = 475;
-                int height = 425;
+                int height = 450;
 
                 // Initialize the web browser control
                 this.webBrowser = new System.Windows.Forms.WebBrowser();

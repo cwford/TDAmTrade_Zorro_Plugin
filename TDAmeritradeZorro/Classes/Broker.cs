@@ -45,7 +45,7 @@ using TDAmeritradeZorro.Structs;
 using TDAmeritradeZorro.Utilities;
 using TDAmeritradeZorro.WebApi.Classes;
 using System.Windows.Forms;
-using DBLib.Classes;
+using TDAmeritradeZorro.Classes.DBLib;
 using System.Reflection;
 
 namespace TDAmeritradeZorro.Classes
@@ -4107,6 +4107,42 @@ namespace TDAmeritradeZorro.Classes
         /// </returns>
         //*********************************************************************
         private static long ToUnixEpoch(DateTime dateTime) => (long)(dateTime - new DateTime(1970, 1, 1)).TotalMilliseconds;
+
+
+        //*********************************************************************
+        //  Method: GetVersionNumber
+        //
+        /// <summary>
+        /// Get the version number of the broker plug-in
+        /// </summary>
+        /// 
+        /// <returns>
+        /// Version number of the app.
+        /// </returns>
+        //*********************************************************************
+        public static string
+            GetVersionNumber
+            ()
+        {
+            // Method member
+            string version;
+
+            // Get the version number from the registry
+            version = Helper.GetRegistryValue(VERSION_NUMBER);
+
+            // Is the version number in the registry?
+            if (string.IsNullOrEmpty(version))
+            {
+                // NO: Get the version number from the app
+                AppVersionNumbersEqual();
+
+                // Version number should be in the registry now
+                version = Helper.GetRegistryValue(VERSION_NUMBER);
+            }
+
+            // Return the version number
+            return version;
+        }
 
         //*********************************************************************
         //  Method: AppVersionNumbersEqual
