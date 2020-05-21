@@ -309,6 +309,9 @@
   <data name="INVALID_ASSET_NOT_SUBSCRIBED" xml:space="preserve">
     <value>Invalid asset not added to subscription list</value>
   </data>
+  <data name="INVALID_TDA_ACCT_NUM" xml:space="preserve">
+    <value>Invalid TD Ameritrade brokerage account number</value>
+  </data>
   <data name="IT_WAS_CANCELED" xml:space="preserve">
     <value>It was CANCELED</value>
   </data>

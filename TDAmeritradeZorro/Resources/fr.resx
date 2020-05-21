@@ -609,4 +609,7 @@
   <data name="TRADE_FILE_SYNCHRONIZATION" xml:space="preserve">
     <value>Synchronisation des fichiers commerciaux</value>
   </data>
+  <data name="INVALID_TDA_ACCT_NUM" xml:space="preserve">
+    <value>Numéro de compte de courtage TD Ameritrade non valide</value>
+  </data>
 </root>

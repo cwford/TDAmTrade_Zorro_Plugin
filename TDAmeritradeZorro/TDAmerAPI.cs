@@ -434,6 +434,16 @@ namespace TDAmeritradeZorro
                 // Call the broker login method
                 isConnected = Broker.Login();
 
+                // Valid TD Ameritrade Account?
+                // Valid TD Ameritrade account?
+                AccountBalance balance = Broker.Account(Broker.settings.TdaAccountNum);
+                if (balance == null)
+                {
+                    // TODO: Translation
+                    LogHelper.Log(LogLevel.Error, $"{Resx.GetString("FAILURE").ToUpper()}: {Resx.GetString("INVALID_TDA_ACCT_NUM")}.");
+                    return 0;
+                }
+
                 // Add the TD Ameritrade account to the accounts as the one and only
                 // account
                 accounts.Append(Broker.settings.TdaAccountNum + "\0" + "");
