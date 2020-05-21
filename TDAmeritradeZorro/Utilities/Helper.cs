@@ -35,6 +35,7 @@ using System.Runtime.InteropServices;
 using TDAmeritradeZorro.Classes;
 using DBLib.Classes;
 using TDAmeritradeZorro.Classes.TDA;
+using Microsoft.Win32;
 
 namespace TDAmeritradeZorro.Utilities
 {
@@ -294,6 +295,97 @@ namespace TDAmeritradeZorro.Utilities
             IntPtr handle
             );
 
+        //*********************************************************************
+        //  Method: GetRegistryValue
+        //
+        /// <summary>
+        /// Get the value of a registry key.
+        /// </summary>
+        /// 
+        /// <param name="subKey">
+        /// The registry entry sub-key.
+        /// </param>
+        /// 
+        /// <returns>
+        /// The string value of the registry sub-key
+        /// </returns>
+        //*********************************************************************
+        public static string
+            GetRegistryValue
+            (
+            string subKey
+            )
+        {
+            // Method member
+            string value = string.Empty;
+
+            // Get the registry key for the plug-in
+            RegistryKey mainKey = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\TDAmZorroPlugIn");
+
+            // Was the main key found?
+            if (mainKey != null)
+            {
+                // YES: Set the value of the sub-key
+                using (mainKey)
+                {
+                    // Do the sub-key names contain the sub-key?
+                    if (mainKey.GetValueNames().Contains(subKey))
+                    {
+                        // YES: Get the sub-key value
+                        value = mainKey.GetValue(subKey).ToString();
+                    }
+                    else
+                    {
+                        // NO: Return an empty key
+                        value = string.Empty;
+                    }
+
+                    // Close use of the registery key
+                    mainKey.Close();
+                }
+            }
+
+            // Return the registry sub-key value
+            return value;
+        }
+
+        //*********************************************************************
+        //  Method: SetRegistryValue
+        //
+        /// <summary>
+        /// Save the value of a registry key.
+        /// </summary>
+        /// 
+        /// <param name="subKey">
+        /// The registry entry sub-key.
+        /// </param>
+        /// 
+        /// <param name="value">
+        /// The sub-key value.
+        /// </param>
+        /// 
+        //*********************************************************************
+        public static void
+            SetRegistryValue
+            (
+            string subKey,
+            string value
+            )
+        {
+            // Get the registry key for the plug-in
+            RegistryKey mainKey = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\TDAmZorroPlugIn");
+
+            // Was the main key found?
+            if (mainKey != null)
+            {
+                // YES: Set the value of the sub-key
+                using (mainKey)
+                {
+                    mainKey.SetValue(subKey, value);
+                    mainKey.Close();
+                }
+            }
+        }
 
     }
 }

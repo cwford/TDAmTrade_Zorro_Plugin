@@ -400,9 +400,9 @@ namespace TDAmeritradeZorro
             BrokerError("TD Ameritrade - Zorro Plug-In");
             BrokerError("Copyright © 2020 by Clyde W. Ford.");
             BrokerError("All Rights Reserved.");
-            BrokerError("\r\nFree for use under LGPL-3.0 license.");
-            BrokerError("For Non-commercial use only.");
-            BrokerError("USE AT YOU OWN RISK.");
+            BrokerError($"Version {Helper.GetRegistryValue(Broker.VERSION_NUMBER)}");
+            BrokerError("Free for non-commercial use only.");
+            BrokerError("USE AT YOU OWN RISK.\r\n\r\n");
 
             // Set the working directory first
             Broker.WORKING_DIR = Directory.GetCurrentDirectory();

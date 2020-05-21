@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29521.150
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDAmeritradeZorro", "TDAmeritradeZorro\TDAmeritradeZorro.csproj", "{5E3CB65B-FEAE-48C4-B16A-B25729626408}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "..\TDAZTest\Test.csproj", "{9FD803B1-8AA1-4A22-BF40-64BE4CC0246D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,18 @@ Global
 		{5E3CB65B-FEAE-48C4-B16A-B25729626408}.Release|x64.Build.0 = Release|Any CPU
 		{5E3CB65B-FEAE-48C4-B16A-B25729626408}.Release|x86.ActiveCfg = Release|Any CPU
 		{5E3CB65B-FEAE-48C4-B16A-B25729626408}.Release|x86.Build.0 = Release|Any CPU
+		{9FD803B1-8AA1-4A22-BF40-64BE4CC0246D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FD803B1-8AA1-4A22-BF40-64BE4CC0246D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FD803B1-8AA1-4A22-BF40-64BE4CC0246D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9FD803B1-8AA1-4A22-BF40-64BE4CC0246D}.Debug|x64.Build.0 = Debug|Any CPU
+		{9FD803B1-8AA1-4A22-BF40-64BE4CC0246D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9FD803B1-8AA1-4A22-BF40-64BE4CC0246D}.Debug|x86.Build.0 = Debug|Any CPU
+		{9FD803B1-8AA1-4A22-BF40-64BE4CC0246D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FD803B1-8AA1-4A22-BF40-64BE4CC0246D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FD803B1-8AA1-4A22-BF40-64BE4CC0246D}.Release|x64.ActiveCfg = Release|Any CPU
+		{9FD803B1-8AA1-4A22-BF40-64BE4CC0246D}.Release|x64.Build.0 = Release|Any CPU
+		{9FD803B1-8AA1-4A22-BF40-64BE4CC0246D}.Release|x86.ActiveCfg = Release|Any CPU
+		{9FD803B1-8AA1-4A22-BF40-64BE4CC0246D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

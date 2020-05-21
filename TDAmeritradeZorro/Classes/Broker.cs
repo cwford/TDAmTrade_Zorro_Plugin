@@ -44,9 +44,9 @@ using TDAmeritradeZorro.Authentication;
 using TDAmeritradeZorro.Structs;
 using TDAmeritradeZorro.Utilities;
 using TDAmeritradeZorro.WebApi.Classes;
-using Microsoft.Win32;
 using System.Windows.Forms;
 using DBLib.Classes;
+using System.Reflection;
 
 namespace TDAmeritradeZorro.Classes
 {
@@ -114,7 +114,29 @@ namespace TDAmeritradeZorro.Classes
         //*********************************************************************
         private static Dictionary<long, string> jsonByOrderNum;
 
+        //*********************************************************************
+        //  Members: Registry sub-key names 
+        //
+        /// <summary>
+        /// Various registry ub-key names for the plug-in main registery entry.
+        /// </summary>
+        //*********************************************************************
+        private static readonly string LICENSE_ACCEPTANCE = "LicenseAcceptance";
+        public static readonly string VERSION_NUMBER = "VersionNumber";
+        private static readonly string VERSION_BUILD_DATE = "VersionDate";
 
+        //*********************************************************************
+        //  Members: DATE_FORMAT_FULL
+        //
+        /// <summary>
+        /// A date format string
+        /// </summary>
+        /// 
+        /// <remarks>
+        /// Format date as Thu, 21 May 2020 14:23:39
+        /// </remarks>
+        //*********************************************************************
+        private static readonly string DATE_FORMAT_FULL = "ddd, dd MMM yyy HH:mm:ss";
         #endregion PRIVATE MEMBERS
 
         #region PUBLIC MEMBERS
@@ -286,41 +308,47 @@ namespace TDAmeritradeZorro.Classes
             bool retCode;
             AuthToken token = null;
 
-            // Is plug-in in test mode?
-            if (TDAmerAPI.opMode == OpMode.Demo)
+            try
             {
+                // Has the license been accepted?
                 if (!LicenseAccepted())
                 {
-                    // Log the error
-                    LogHelper.Log(LogLevel.Error, $"{Resx.GetString("LICENSE_NOT_ACCEPTED")}");
+                    // NO: Give user a chance to accept the license; accepted?
+                    if (!ShowLicenseForm())
+                    {
+                        // NO: Log the error
+                        LogHelper.Log(LogLevel.Error, $"{Resx.GetString("LICENSE_NOT_ACCEPTED")}");
+
+                        return false;
+                    }
+                }
+
+                // Is plug-in in test mode?
+                if (TDAmerAPI.opMode == OpMode.Demo)
+                {
+                    // YES: Test mode is Demo mode. Run through the tests of the
+                    // broker plug-in.
+                    retCode = Tests.DoTests(settings.ClientId);
+
+                    // Tests successful?
+                    if (retCode)
+                    {
+                        // YES:
+                        LogHelper.Log(LogLevel.Info, $"\r\n{Resx.GetString("SUCCESS").ToUpper()}: {Resx.GetString("SUCCESS_IN_TESTS")}.");
+                    }
+                    else
+                    {
+                        // NO:
+                        LogHelper.Log(LogLevel.Error, $"\r\n{Resx.GetString("FAILURE").ToUpper()}: {Resx.GetString("ERRORS_IN_TESTS")}.");
+                    }
+
+                    // Return a failure code, so processing stops with this method.
                     return false;
                 }
 
-                // YES: Test mode is Demo mode. Run through the tests of the
-                // broker plug-in.
-                retCode = Tests.DoTests(settings.ClientId);
-
-                // Tests successful?
-                if (retCode)
-                {
-                    // YES:
-                    LogHelper.Log(LogLevel.Info, $"\r\n{Resx.GetString("SUCCESS").ToUpper()}: {Resx.GetString("SUCCESS_IN_TESTS")}.");
-                }
-                else
-                {
-                    // NO:
-                    LogHelper.Log(LogLevel.Error, $"\r\n{Resx.GetString("FAILURE").ToUpper()}: {Resx.GetString("ERRORS_IN_TESTS")}.");
-                }
-
-                // Return a failure code, so processing stops with this method.
-                return false;
-            }
-
-            try
-            {
                 // NO: Live trading mode
                 LogHelper.Log($"    {Resx.GetString("READING")} {Resx.GetString("SETTINGS")} {Resx.GetString("FILE")}...");
- 
+
                 // Initialize the currency interest rate dictionary. Use USD to
                 // force a read of all rates except HKD. Then, do HKB separately.
                 LogHelper.Log($"    {Resx.GetString("INTEREST_RATE_INIT")}...");
@@ -2082,7 +2110,7 @@ namespace TDAmeritradeZorro.Classes
             )
         {
             // Do not accept license
-            SaveLicenseAccepted(0);
+            Helper.SetRegistryValue(LICENSE_ACCEPTANCE, "0");
 
             // Review the license
             LicenseAccepted();
@@ -3964,69 +3992,27 @@ namespace TDAmeritradeZorro.Classes
             // Method member
             bool acceptance = false;
 
-            // Get the registry key for the plug-in
-            RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\TDAmZorroPlugIn");
-
-            // Was the key found?
-            if (key != null)
+            // Are the app version numbers the same?
+            if (AppVersionNumbersEqual())
             {
-                // YES: Read the value of "Accept"
-                using (key)
-                {
-                    int accept = int.Parse(key.GetValue("Accept").ToString());
-                    acceptance = accept == 1;
-                }
+                // YES: Get the registry value for the license acceptance
+                string acceptRegistry = Helper.GetRegistryValue(LICENSE_ACCEPTANCE);
+
+                // Convert registery value to a boolean
+                if (!string.IsNullOrEmpty(acceptRegistry))
+                    acceptance = int.Parse(acceptRegistry) == 1;
+                else
+                    acceptance = false;
             }
             else
             {
+                // NO: Does not matter whether previous acceptance is on-file.
+                // New version number requires new acceptance.
                 acceptance = false;
-            }    
-
-            // Was the license accepted
-            if (!acceptance)
-            {
-                // NO: Return result of accepting form
-                return ShowLicenseForm();
             }
-            else
-            {
-                // YES: Return accetpance 
-                return true;
-            }
-        }
 
-        //*********************************************************************
-        //  Method: SaveLicenseAccepted
-        //
-        /// <summary>
-        /// Save acceptance of the user license for the plug-in
-        /// </summary>
-        /// 
-        /// <param name="accept">
-        /// 0 = not accepted
-        /// 1 = accepted
-        /// </param>
-        /// 
-        //*********************************************************************
-        private static void
-            SaveLicenseAccepted
-            ( 
-            int accept
-            )
-        {
-            // Get the registry key for the plug-in
-            RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\TDAmZorroPlugIn");
-
-            // Was the key found?
-            if (key != null)
-            {
-                // YES: Read the value of "Accept"
-                using (key)
-                {
-                    key.SetValue("Accept", accept.ToString());
-                    key.Close();
-                }
-            }
+            // Return the value of acceptance
+            return acceptance;
         }
 
         //*********************************************************************
@@ -4058,7 +4044,7 @@ namespace TDAmeritradeZorro.Classes
             if (result == DialogResult.Yes)
             {
                 // Save the acceptance
-                SaveLicenseAccepted(1);
+                Helper.SetRegistryValue(LICENSE_ACCEPTANCE, "1");
 
                 // Return acceptance
                 return true;
@@ -4066,7 +4052,7 @@ namespace TDAmeritradeZorro.Classes
             else
             {
                 // Save declination
-                SaveLicenseAccepted(0);
+                Helper.SetRegistryValue(LICENSE_ACCEPTANCE, "0");
 
                 // Return non-acceptance
                 return false;
@@ -4121,6 +4107,95 @@ namespace TDAmeritradeZorro.Classes
         /// </returns>
         //*********************************************************************
         private static long ToUnixEpoch(DateTime dateTime) => (long)(dateTime - new DateTime(1970, 1, 1)).TotalMilliseconds;
+
+        //*********************************************************************
+        //  Method: AppVersionNumbersEqual
+        //
+        /// <summary>
+        /// Get the current app version number and build date.
+        /// </summary>
+        /// 
+        /// <returns>
+        /// True if the version (major and minor) has not changed, false if it
+        /// has changed.
+        /// </returns>
+        //*********************************************************************
+        public static bool
+            AppVersionNumbersEqual
+            ()
+        {
+            // Method member
+            bool retVal = false;
+
+            // Get the app version from the executing assembly
+            var version = Assembly.GetExecutingAssembly().GetName().Version;
+
+            // Get the build date from the app date
+            var buildDate = new DateTime(2000, 1, 1)
+                       .AddDays(version.Build).AddSeconds(version.Revision * 2);
+
+            // Stringify the registry app version
+            string versionString = version.ToString();
+
+            // Get the last app date from the registry
+            var regVersion = Helper.GetRegistryValue(VERSION_NUMBER);
+
+            // Get whether the last version is the same as the current version
+            retVal = CompareVersionNumbers(versionString, regVersion);
+
+            // Are the versions equal?
+            if (!retVal)
+            {
+                // NO: Save the current version number
+                Helper.SetRegistryValue(VERSION_NUMBER, versionString);
+
+                // Save the current build date
+                Helper.SetRegistryValue(VERSION_BUILD_DATE, buildDate.ToString(DATE_FORMAT_FULL));
+            }
+
+            // Return whether the registry key has changed
+            return retVal;
+        }
+
+        //*********************************************************************
+        //  Method: CompareVersionNumbers
+        //
+        /// <summary>
+        /// Compare values for two version numbers.
+        /// </summary>
+        /// 
+        /// <param name="versionA">
+        /// First version number.
+        /// </param>
+        /// 
+        /// <param name="versionB">
+        /// Second version number.
+        /// </param>
+        /// 
+        /// <returns>
+        /// True if the major and minor version numbers are the same, false if
+        /// they are not.
+        /// </returns>
+        //*********************************************************************
+        public static bool
+            CompareVersionNumbers
+            (
+            string versionA,
+            string versionB
+            )
+        {
+            // Split apart the versions
+            string[] A = versionA.Split('.');
+            string[] B = versionB.Split('.');
+
+            // Array of version number parts needs to be the same or versions
+            // are not equal
+            if (A.Length != B.Length) return false;
+
+            // Return comparison of major and minor version numbers
+            return (Convert.ToInt32(A[0])) == Convert.ToInt32(B[0]) &&
+                (Convert.ToInt32(A[1])) == Convert.ToInt32(B[1]);
+        }
         #endregion PRIVATE METHODS
     }
 }
