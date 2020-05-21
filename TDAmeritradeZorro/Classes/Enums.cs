@@ -420,7 +420,7 @@ namespace TDAmeritradeZorro.Classes
         SET_SELL_SELL_SHORT = 4012,
 
         // Set the language resource file to use
-        SET_LANGUAGE
+        SET_LANGUAGE = 4014
     }
 
     //*************************************************************************
