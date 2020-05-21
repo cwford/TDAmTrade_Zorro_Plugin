@@ -23,4 +23,3 @@ TDAmTrade is a broker plug-in for Zorro, allowing the Zorro trading engine to co
 **Please note that you cannot trade indices (except through ETFs), futures, future options, or currency pairs (Forex) using this plug-in. The TD Ameritrade API does not allow for the trading of these instruments at the present time.**
 
 For information about getting started with this TD Ameritrade broker plug-in for Zorro, please see [the Wiki Documentation](https://github.com/cwford/TDAmTrade_Zorro_Plugin/wiki).
-
