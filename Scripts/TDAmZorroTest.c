@@ -106,7 +106,6 @@ void setLimit(
 	if (OrderMode == 1)
 	{
 		OrderLimit = priceClose() + Factor * Spread;
-		//printf(" Limit %s", sftoa(OrderLimit, 5));
 	}
 	else if (OrderMode == 2)
 	{
