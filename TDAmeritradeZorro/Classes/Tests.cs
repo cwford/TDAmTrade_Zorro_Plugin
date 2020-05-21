@@ -162,7 +162,7 @@ namespace TDAmeritradeZorro.Classes
                 LogHelper.Log(LogLevel.Error, $"{Resx.GetString("FAILURE").ToUpper()}: {Resx.GetString("INVALID_TDA_ACCT_NUM")}.");
                 return false;
             }
-
+            
             //*****************************************************************
             //
             // T E S T  # 3:  R E F R E S H   A U T H E N T I C A T I O N
