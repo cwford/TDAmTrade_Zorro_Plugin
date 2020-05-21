@@ -1502,13 +1502,17 @@ namespace TDAmeritradeZorro
                     return 1;
                 /*
                 case ZorroCommand.DO_EXERCISE:
-                    // Exercise sthe give number of contracts of an option
+                    // Exercise the give number of contracts of an option
                     return Broker.DoExercise(nCommand, Marshal.PtrToStringAnsi(dwParameter));
                 */
 
                 case ZorroCommand.GET_COMPLIANCE:
                     // Full NFA compliance
                     return 15;
+
+                case ZorroCommand.SET_LANGUAGE:
+                    // Set the language resource to use for globalization
+                    return Broker.SetLanguage(nCommand, Marshal.PtrToStringAnsi(dwParameter));
 
                 default:
                     break;

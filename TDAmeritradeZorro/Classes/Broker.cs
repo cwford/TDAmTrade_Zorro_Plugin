@@ -1381,6 +1381,48 @@ namespace TDAmeritradeZorro.Classes
 
         #region PUBLIC METHODS TO IMPLEMENT THE ZORRO BROKER COMMANDS
         //*********************************************************************
+        //  Method: SetLanguage
+        //
+        /// <summary>
+        /// Set the language resource file to use.
+        /// </summary>
+        /// 
+        /// <param name="nCommand">
+        /// The SET_LANGUAGE command (4014)
+        /// </param>
+        /// 
+        /// <param name="langResx">
+        /// The language designator.
+        /// </param>
+        /// 
+        /// <returns>
+        /// Non-zero value (success), zero (failure).
+        /// </returns>
+        //*********************************************************************
+        public static int
+            SetLanguage
+            (
+            int nCommand,
+            string langResx
+            )
+        {
+            // Validate the language?
+            if (ValidateLang(langResx))
+            {
+                // YES: Valid language. Set the language in SETTINGS
+                settings.LangResx = langResx;
+
+                // Return a non-zero value (success)
+                return 1;
+            }
+            else
+            {
+                // NO: Return a zero value (failure)
+                return 0;
+            }
+        }
+
+        //*********************************************************************
         //  Method: GetUnderlying
         //
         /// <summary>

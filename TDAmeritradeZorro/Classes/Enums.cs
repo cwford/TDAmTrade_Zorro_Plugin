@@ -417,7 +417,10 @@ namespace TDAmeritradeZorro.Classes
         SET_TESTMODE = 4010,
 
         // Set the SELL or SELL SHORT mode
-        SET_SELL_SELL_SHORT = 4012
+        SET_SELL_SELL_SHORT = 4012,
+
+        // Set the language resource file to use
+        SET_LANGUAGE
     }
 
     //*************************************************************************
