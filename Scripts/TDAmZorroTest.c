@@ -336,7 +336,6 @@ void goLong
 	OrderMode = 1;
 
 	printf("\n\nGoing LONG for...");
-	return;
 	for (i = 0; i < numTestAssets; ++i)
 	{
 		// Print the asset being selected
@@ -431,23 +430,26 @@ function run()
 
 	set(LOGFILE);
 
+	// Is this the initialization run?
 	if (is(INITRUN))
 	{
-		initRun();
-		loadTestAssets();
-		asset("");
-	}
-
-	// Print run # being entered
-	if (RunNum > 0)
-		printf("\nEntered TESTING RUN #%i...", RunNum);
-	else
+		// YES: Print initialization run headding		
 		printf("\nINITIALIZATION RUN...");
 
+		// Set initial parameters
+		initRun();
 
-	// Is this RUN beyond the initial RUN?
-	if (RunNum > 0)
+		// Load the plug-in test assets
+		loadTestAssets();
+
+		// Select a dummy asset to start
+		asset("");
+	}
+	else
 	{
+		// NO: Print the run number heading
+		printf("\nEntered TESTING RUN #%i...", RunNum);
+
 		// YES: Is this run an even run?
 		if (RunNum % 2 == 0)
 		{
