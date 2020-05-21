@@ -267,20 +267,21 @@ If all self-diagnostic tests were successful, you will receive an output log tha
 </p>
 
 ### Diagnostic Script
-In the **Scripts** folder of this project you will find TDAmZorroTest.c, a Zorro script which runs a series of tests which determine how well Zorro communicates with this plug-in. The script is not a trading script. Instead, it takes the testing assets you have placed in the SETTINGS file and cycles through BUYING shares of those assets at a distant LIMIT price, then exiting from those LONG positions, then SELLING shares of those assets at a distant LIMIT price, then exiting from those SHORT positions. In doing so, all of the major features of the plug-in are exercised in communication with the Zorro trading engine. This test script run for about 5 or 6 minutes before automatically shutting down. To run the test script, do the following:
+In the **Scripts** folder of this project you will find TDAmZorroTest.c, a Zorro script which runs a series of tests which determine how well Zorro communicates with this plug-in. The script is not a trading script nor is it sophisticated. Instead, it's a simple script that takes the testing assets you have placed in the SETTINGS file and cycles through BUYING shares of those assets at a distant LIMIT price, then exiting from those LONG positions, then SELLING shares of those assets at a distant LIMIT price, then exiting from those SHORT positions. Doing all of this twice. Regardless of its simplicity, all of the major features of the plug-in are exercised in communication with the Zorro trading engine. This test script runs for about 10 minutes before automatically shutting down. To run the test script, do the following:
 
-1. Place TDAmZorroTest.c in the 
-2. Open Zorro/Strategy folder.
-3. Examine the script in edit mode, and make any changes you deem necessary
-4. Select the 'Real' mode for Zorro.
-5. Select the TDAmeritrade broker plug-in.
-6. Select the TDAmZorroTest script from the script drop-down.
-7. Press the 'Trade' button to run the script.
-8. Depending upon the verbosity and diagnostics level you can change both in the script., you will see a fair amount of information printed in the message window as the script runs.
-9. Make sure you allow the script to finish, or you could be in a situation where orders exist on TD Ameritrade that have not been canceled.
-10. Check your TD Ameritrade account to double-check that no orders have been orphaned once the script ends, and that all orders have been canceled.
+1. Place TDAmZorroTest.c in the Zorro/Strategy folder.
+2. Select the **Real** mode for Zorro.
+3. Select the TDAmeritrade broker plug-in.
+4. Select the TDAmZorroTest script from the script drop-down.
+5. Examine the script in edit mode, and make any changes you deem necessary
+6. Press the **Trade** button to run the script.
+7. Depending upon the verbosity and diagnostics level *you can change both in the script), you will see a fair amount of information printed in the message window as the script runs.
+8. Make sure you allow the script to finish, or you could be in a situation where orders exist on TD Ameritrade that have not been canceled.
+9. When the script has finished running, check your TD Ameritrade account to double-check that no orders have been orphaned once the script ends, and that all orders have been canceled.
 
-Remember this is not a real trading script, even though many, if not most, of the plug-in's interface with Zorro's trading engine and TD Ameritrade will be tested.
+While the testing script is running, please be sure the box at the far right end of the status textbox is green. This will tell you that you are connected to TD Ameritrade. Also, while the script is running, and depending upon the VERBOSITY and DIAGNOSTIC levels you have set, you will see a number of messages from the Zorro trading engine and the TD Ameritrade plug-in in the message window.
+
+Remember this is not a real trading script, even though many, if not most, of the plug-in's interfacing with Zorro's trading engine and TD Ameritrade will be tested.
 
 
 #### Limitations of Testing

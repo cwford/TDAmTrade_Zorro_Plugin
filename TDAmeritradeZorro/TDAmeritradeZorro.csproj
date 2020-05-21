@@ -186,6 +186,7 @@
     <Content Include="bin\x86\Debug\Microsoft.Data.Sqlite.dll" />
     <Content Include="bin\x86\Debug\TDAmeritrade.dll" />
     <Content Include="bin\x86\Debug\TDAmeritrade.pdb" />
+    <Content Include="Scripts\TDAmZorroTest.c" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DllExport">
