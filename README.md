@@ -18,7 +18,10 @@
 </p>
 
 ## Overview
-TDAmTrade_Zorro_Plugin is a 32-bit broker plug-in for Zorro, allowing it to communicate with TD Ameritrade using the TD Ameritrade REST API. This plug-in is free for non-commercial use. With this plug-in, you can use Zorro to automatically trade stocks, ETFs and options through your TD Ameritrade brokerage account.
+TDAmTrade_Zorro_Plugin is a broker plug-in for Zorro, allowing it to communicate with TD Ameritrade using the TD Ameritrade REST API. This plug-in is free for non-commercial use. With this plug-in, you can use Zorro to automatically trade stocks, ETFs and options through your TD Ameritrade brokerage account. For information about getting started with this TD Ameritrade broker plug-in for Zorro, please see [the Wiki Documentation](https://github.com/cwford/TDAmTrade_Zorro_Plugin/wiki).
+
+**NOTE: The TD Ameritrade REST API does not allow for trading futures, future options, or currency pairs (Forex) through its REST API.**
+
 
 The following Zorro broker methods are implemented:
 
