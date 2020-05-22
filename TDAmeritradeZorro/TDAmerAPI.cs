@@ -434,12 +434,11 @@ namespace TDAmeritradeZorro
                 // Call the broker login method
                 isConnected = Broker.Login();
 
-                // Valid TD Ameritrade Account?
                 // Valid TD Ameritrade account?
                 AccountBalance balance = Broker.Account(Broker.settings.TdaAccountNum);
                 if (balance == null)
                 {
-                    // TODO: Translation
+                    // TODO: Log the error
                     BrokerError($"{Resx.GetString("FAILURE").ToUpper()}: {Resx.GetString("INVALID_TDA_ACCT_NUM")}.");
                     return 0;
                 }
@@ -841,7 +840,7 @@ namespace TDAmeritradeZorro
             // NOTE: The layout of managed and unmanaged arrays isn't the same.
             // Zorro passes a pointer to a T6 array, and we need to use an
             // unmanaged pointer to get the original C++ T6 array pointer. We
-            // will loda a T6 array of structures at that address.
+            // will load a T6 array of structures at that address.
             //
             //*****************************************************************
             unsafe

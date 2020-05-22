@@ -158,7 +158,7 @@ namespace TDAmeritradeZorro.Classes
             AccountBalance balance = Broker.Account(Broker.settings.TdaAccountNum);
             if (balance == null)
             {
-                // TODO: Translation
+                // Log the error
                 LogHelper.Log(LogLevel.Error, $"{Resx.GetString("FAILURE").ToUpper()}: {Resx.GetString("INVALID_TDA_ACCT_NUM")}.");
                 return false;
             }
