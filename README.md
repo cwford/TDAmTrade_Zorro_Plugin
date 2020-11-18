@@ -24,8 +24,6 @@ TDAmTrade is a broker plug-in for Zorro, allowing the Zorro trading engine to co
 
 For information about getting started with this TD Ameritrade broker plug-in for Zorro, please see [the Wiki Documentation](https://github.com/cwford/TDAmTrade_Zorro_Plugin/wiki).
 
-```javascript
-<sub>&ast; For the purpose of this plug-in and its license the term **non-commercial use** means any use of this plug-in, without monetary charge, by a single individual only for that individual's trading of stocks and other assets through the TD Ameritrade REST API. The term **commercial use** means any use of this plug-in by one party (the first party), where a monetary fee is charged to other parties for using the plug-in separately, or as a component of other software provided by the first party, to trade stocks and other assets through the TD Ameritrade REST API.</sub>
-```
+<sub style="background:gray">&ast; For the purpose of this plug-in and its license the term **non-commercial use** means any use of this plug-in, without monetary charge, by a single individual only for that individual's trading of stocks and other assets through the TD Ameritrade REST API. The term **commercial use** means any use of this plug-in by one party (the first party), where a monetary fee is charged to other parties for using the plug-in separately, or as a component of other software provided by the first party, to trade stocks and other assets through the TD Ameritrade REST API.</sub>
 
 
