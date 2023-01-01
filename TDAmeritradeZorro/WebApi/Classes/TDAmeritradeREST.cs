@@ -119,6 +119,12 @@ namespace TDAmeritradeZorro.WebApi.Classes
                 if (Params[5] != null)
                     reqUri = reqUri.Replace("{order_id}", Params[5].ToString());
 
+                ServicePointManager.Expect100Continue = true;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
+                       | SecurityProtocolType.Tls11
+                       | SecurityProtocolType.Tls12
+                       | SecurityProtocolType.Ssl3;
+
                 // Create a new http web request object with the URI
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(reqUri);
                 
